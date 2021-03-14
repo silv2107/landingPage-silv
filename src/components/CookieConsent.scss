@@ -1,0 +1,108 @@
+ @import "../variables";
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsla(0, 0%, 60%, 0.371);
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+    display: grid;
+}
+
+.cookieConsentModal{
+ place-self: center;
+ width: 40vw;
+ height: 60vh;
+ background-color: $backgroundColor;
+ display: flex;
+ flex-direction: column;
+ &__header{
+     background-color: $primaryColor;
+     color: $backgroundColor;
+     padding: 1em;
+     h1{
+         margin: 0;
+     }
+ }
+ &__content {
+     display: flex;
+     justify-content: space-between;
+     flex-direction: column;
+     flex-grow: 2;
+     padding: 1em;
+ }
+
+ tbody {
+     flex-grow: 2;
+ }
+ input[type="checkbox"] {
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+    display: none;  
+    &:checked
+    + .consentToggle {
+        background-color: hsl(120, 20%, 70%);
+    }
+
+    &:checked
+    + .consentToggle::after {
+        transform: translateX(1em);
+        background-color: green;
+    }
+    &:disabled
+    + .consentToggle {
+        opacity: .5;
+    }
+    &:disabled
+    + .consentToggle::after {
+        opacity: .5;
+    }
+}
+ .consentToggle{
+     display: inline-block;
+     width: 2em;
+     height: 1em;
+     border-radius: .5em;
+     background-color: lightgrey;
+     transition: background-color 500ms ease;
+     &::after {
+         display: block;
+         content: "";
+         width: 1em;
+         height: 1em;
+         background-color: grey;
+         border-radius: 50%;
+         transition: transform 500ms ease, background-color 500ms ease;
+     }
+
+ }
+
+ tr td:first-of-type {
+     width: 30%;
+     text-align: center;
+ }
+
+ .content__buttons{
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+ }
+
+ .buttons__button{
+    width: 8em;
+    height: 2em;
+    background-color: lightgrey;
+    border-radius: 5px;
+    border: none;
+
+     &--highlight{
+        background-color: green;
+        color: $backgroundColor;
+        font-weight: 700;
+     }
+ }
+ 
+}

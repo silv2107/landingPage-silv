@@ -3,7 +3,7 @@ import CarouselItem from "./CarouselItem";
 
 function Gallery(){
     return(
-        <Carousel cols={1} rows={1} gap={0} loop autoplay={1000} >
+        <Carousel cols={1} rows={1} gap={0} loop autoplay={3000} >
             <Carousel.Item>
                 <CarouselItem
                 image="https://picsum.photos/1920/1080?ramdom=1"

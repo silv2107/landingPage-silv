@@ -1,6 +1,25 @@
+import userEvent from "@testing-library/user-event";
+import { useEffect } from "react";
+import setCookies from "../helpers/setCookies";
 import "./CookieConsent.scss";
 
 function CookieConsent(){
+    useEffect(function(){
+        document.body.className = "modal--open";
+    }, [])
+
+    function allowAll(){
+        var now = Date.now();
+        var expires = new Date(now + 60 *1000).toUTCString();
+        var payload = {
+            acceptnecessary:true,
+            acceptanalytics:true
+        };
+        setCookies(payload);
+        document.cookie =`landingpagedemo=${JSON.stringify(payload)}; expires=${expires}; path=/`;
+        document.body.className = "";
+        document.querySelector(".overlay").style.display = "none";
+    }
     return (
         <div className="overlay">
             <section className="cookieConsentModal">
@@ -8,8 +27,8 @@ function CookieConsent(){
                     <h1>Hvad bruger vi cookies til?</h1>
                 </header>
                 <article className="cookieConsentModal__content">
+                 <table>
                     <tbody>
-                        <table>
                             <tr>
                                 <td>
                                     <input type="checkbox" id="cookie__necessary" disabled checked/>
@@ -28,12 +47,12 @@ function CookieConsent(){
                                     <p>Tillad alle cookies. Analytics - vi bruger tredjepartscookies fra Google til at spore og lave statistik.</p>
                                 </td>
                             </tr>
-                        </table>
                     </tbody>
+                </table>
 
                     <div className="content__buttons">
                         <button className="buttons__button">Tillad valgte</button>
-                        <button className="buttons__button buttons__button--highlight">Tillad alle</button>
+                        <button className="buttons__button buttons__button--highlight" onClick={() => allowAll()}>Tillad alle</button>
                     </div>
                 </article>
 

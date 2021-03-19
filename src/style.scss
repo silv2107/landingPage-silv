@@ -6,4 +6,8 @@ html, body{
     background-color: $backgroundColor;
     color:$textColor; 
     font-size: $fontSize; 
+    &.modal--open {
+        height: 100vh;
+        overflow-y: hidden;
+    }
 }

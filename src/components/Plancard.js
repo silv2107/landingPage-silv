@@ -8,7 +8,10 @@ function PlanCard({ heading, summary, price, link, getFrom, features }){
                 <p className="title__summary">{summary}</p>
                 <p className="title__price">{price}</p>
                 <p className="title__conditions">/users/month*<br/>(billed annually)</p>
-                <a className="title__link" href={link}>Try for <span className="title__link--caps">free</span> &gt;</a>
+                <a className="title__link" href={link}
+                //eslint-disable-next-line
+                onClick={() => gtag("event", "select_content", {"content_type": heading})}
+                >Try for <span className="title__link--caps">free</span> &gt;</a>
             </section>
             <section className="planCard__features">
                 { getFrom  ? <><p className="features__getFrom">Get all {getFrom} features </p><h2 className="features__heading">Plus</h2></> : <h2 className="features__heading">Features</h2>}

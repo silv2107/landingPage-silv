@@ -1,4 +1,3 @@
-import userEvent from "@testing-library/user-event";
 import { useEffect } from "react";
 import setCookies from "../helpers/setCookies";
 import "./CookieConsent.scss";

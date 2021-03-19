@@ -8,6 +8,7 @@ function PlanCard({ heading, summary, price, link, getFrom, features }){
                 <p className="title__summary">{summary}</p>
                 <p className="title__price">{price}</p>
                 <p className="title__conditions">/users/month*<br/>(billed annually)</p>
+                
                 <a className="title__link" href={link}
                 //eslint-disable-next-line
                 onClick={() => gtag("event", "select_content", {"content_type": heading, "test-type": "A"})}
